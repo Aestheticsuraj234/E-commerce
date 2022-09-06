@@ -5,7 +5,7 @@ import { AiOutlineShoppingCart, AiFillCloseCircle, AiFillMinusCircle, AiFillPlus
 import { BsFillBagCheckFill } from 'react-icons/bs'
 
 
-const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
+const Navbar = () => {
 
 const toggleCart = () => {
 
@@ -48,30 +48,28 @@ return (
       <h2 className='font-bold text-xl text-center'> Shoping-Cart</h2>
       <span onClick={toggleCart} className='absolute right-2 top-2  cursor-pointer text-2xl text-indigo-600'> <AiFillCloseCircle /></span>
       <ol className='list-decimal font-semibold'>
-        {Object.keys(cart).length == 0 && <div className='my-4 text-base font-semibold'>Your Cart is Empty</div>}
+        
 
-        {Object.keys(cart).map((K) => {
-          return (<li key={K}>
+        
+         <li >
             <div className='item flex  my-3'>
               <div className='w-2/3 font-semibold '>
-                {cart[K].name}
+               Hello
               </div>
               <div className='w-1/3 flex items-center justify-center font-semibold text-lg'>
-                <AiFillMinusCircle onClick={removeFromCart(K,1,cart[K].price,cart[K].name,cart[K].size,cart[K].variant)} className='cursor-pointer text-indigo-800' />
-                <span className='mx-2 text-sm'>{cart[K].qty}</span>
-                <AiFillPlusCircle  onClick={addToCart(K,1,cart[K].price,cart[K].name,cart[K].size,cart[K].variant)} className=' cursor-pointer text-indigo-800' />
+                <AiFillMinusCircle  className='cursor-pointer text-indigo-800' />
+                <span className='mx-2 text-sm'>1</span>
+                <AiFillPlusCircle  className=' cursor-pointer text-indigo-800' />
               </div>
             </div>
-          </li>)
-        })
-        }
+          </li>
 
       </ol>
 
       <div className='flex'>
 
         <button class="flex mx-2 mt-6 text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none font-semibold hover:bg-indigo-600 rounded text-sm "><BsFillBagCheckFill className='m-1' />  Checkout</button>
-        <button onClick={clearCart} class="flex mx-2 mt-6 text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded text-sm  font-semibold">Clear-Cart</button>
+        <button  class="flex mx-2 mt-6 text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded text-sm  font-semibold">Clear-Cart</button>
 
       </div>
     </div>
