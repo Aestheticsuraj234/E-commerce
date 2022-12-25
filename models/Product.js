@@ -1,27 +1,36 @@
-const mongoose = require('mongoose');
+import { stringifyQuery } from "next/dist/server/server-route-utils";
 
-const ProductSchema = new mongoose.Schema({
-    title: { type: String , required: true},
+const mongoose = require("mongoose");
 
-    slug: { type: String , required: true,unique:true},
+const ProductSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true },
 
-    desc: { type: String , required: true},
+    slug: { type: String, required: true, unique: true },
 
-    img: { type: String , required: true},
+    desc: { type: String, required: true },
 
-    category: { type: String , required: true},
+    img: { type: String, required: true },
 
-    size: { type: String},
+    category: { type: String, required: true },
 
-    color: { type: String},
+    madeIn: { type: String, required: true },
 
-    price: { type: String,required: true},
+    reeds: { type: String },
 
-    availableQty: {type: Number,required:true},
-   
-     
+    density: { type: Number },
 
-} ,{timestamps: true});
+    threads: { type: String, required: true },
+
+    color: { type: String },
+
+    price: { type: Number, required: true },
+
+    availableQty: { type: Number, required: true },
+  },
+  { timestamps: true }
+);
 
 mongoose.models = {}
-export default mongoose.model("product",ProductSchema);
+
+export default mongoose.model("product", ProductSchema);
