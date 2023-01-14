@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -6,18 +6,16 @@ import { useRouter } from "next/router";
 
 const login = () => {
   const router = useRouter();
-
+  
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-
-
   useEffect(() => {
-   if(localStorage.getItem('token')){
-    router.push('/')
-   }
-  }, [])
-  
+    if (localStorage.getItem("myuser")) {
+      router.push("/");
+    }
+  }, []);
+
   // HandleCHange
   const handleChange = (e) => {
     if (e.target.name == "email") {
@@ -44,7 +42,10 @@ const login = () => {
     setEmail("");
     setPassword("");
     if (response.success) {
-      localStorage.setItem("token",response.token)
+      localStorage.setItem(
+        "myuser",
+        JSON.stringify({ token: response.token, email: response.email })
+      );
       toast.success("🦄 You logged in Successfully!", {
         position: "top-left",
         autoClose: 1000,
@@ -152,7 +153,7 @@ const login = () => {
                 </div>
                 <div className="flex items-center justify-between">
                   <a
-                    href="#"
+                    href="/forgot"
                     className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
                     Forgot password?

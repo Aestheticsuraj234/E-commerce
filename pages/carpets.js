@@ -5,7 +5,6 @@ import ProductBanner from "../components/ProductBanner";
 import Image from "next/image";
 
 const carpets = ({ products }) => {
-
   return (
     <div>
       <section className="bg-gradient-to-r from-indigo-200 via-red-200 to-lime-100">
@@ -14,7 +13,8 @@ const carpets = ({ products }) => {
           <h1 className="font-extrabold py-12 text-gray-800 text-center text-xl">
             Top Product
           </h1>
-          <div className="flex flex-wrap it -m-4 h-full w-full space-x-4">
+
+          <div className=" flex flex-wrap  mx-2 my-2 p-2 space-y-4 h-full w-full space-x-4 ">
             {Object.keys(products).map((items) => {
               return (
                 <Link
@@ -51,38 +51,18 @@ const carpets = ({ products }) => {
                       </div>
                       <div className="mt-1">
                         <p className="inline-flex">Reeds:</p>
-                        {products[items].reeds.includes(700) && (
+                        {products[items].reeds.map((reed) => (
                           <span className="border border-gray-300 px-1 mx-1">
-                            700
+                            {reed}
                           </span>
-                        )}
-                        {products[items].reeds.includes(1200) && (
-                          <span className="border border-gray-300 px-1 mx-1">
-                            1200
-                          </span>
-                        )}
-                        {products[items].reeds.includes(1500) && (
-                          <span className="border border-gray-300 px-1 mx-1">
-                            1500
-                          </span>
-                        )}
-                      </div> 
+                        ))}
+                      </div>
                       <div className="mt-1">
-                        {products[items].color.includes("blue") && (
+                        {products[items].color.map((color) => (
                           <button
-                            className={`border-2 bg-blue-600 rounded-full w-6 h-6`}
+                            className={`border-2 bg-${color}-600 rounded-full w-6 h-6`}
                           ></button>
-                        )}
-                        {products[items].color.includes("red") && (
-                          <button
-                            className={`border-2 bg-red-600 rounded-full w-6 h-6`}
-                          ></button>
-                        )}
-                        {products[items].color.includes("green") && (
-                          <button
-                            className={`border-2 bg-green-600 rounded-full w-6 h-6`}
-                          ></button>
-                        )}
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -128,6 +108,10 @@ export async function getServerSideProps(context) {
         carpets[item.title].color = [item.color];
         carpets[item.title].reeds = [item.reeds];
         carpets[item.title].threads = [item.threads];
+      } else {
+        carpets[item.title].color = [];
+        carpets[item.title].reeds = [];
+        carpets[item.title].threads = [];
       }
     }
   }

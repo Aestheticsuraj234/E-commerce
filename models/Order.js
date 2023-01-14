@@ -1,21 +1,27 @@
+import { stringifyQuery } from "next/dist/server/server-route-utils";
+
 const mongoose = require("mongoose");
 
 const OrderSchema = new mongoose.Schema(
   {
-    userId: { type: String, required: true },
-    products: [
-      {
-        productId: { type: String },
-        quantity: { type: Number, default: 1 },
-      },
-    ],
+    email: { type: String, required: true },
+    name: { type: String, required: true },
+    orderId: { type: String, required: true },
+    paymentInfo: { type: String, default: "" },
+    products: { type: Object, required: true },
 
     address: { type: String, required: true },
+    state: { type: String, required: true },
+    city: { type: String, required: true },
+    pincode: { type: String, required: true },
 
+    transactionid: { type: String, default: "" },
     amount: { type: Number, required: true },
-    Status: { type: String, default: "Pending", required: true },
+    phone: { type: String, required: true },
+    Status: { type: String, default: "Initiated", required: true },
+    deliveryStatus: { type: String, default: "unshipped", required: true },
   },
   { timestamps: true }
 );
-mongoose.models = {}
+mongoose.models = {};
 export default mongoose.model("Order", OrderSchema);

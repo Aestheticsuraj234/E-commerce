@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import "../styles/globals.css";
 import { useRouter } from "next/router";
 import LoadingBar from "react-top-loading-bar";
+import "../styles/style.css";
 
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
@@ -30,15 +31,15 @@ function MyApp({ Component, pageProps }) {
       console.error(e, "this is error...");
       localStorage.clear();
     }
-    const token = localStorage.getItem("token");
-    if (token) {
-      setUser({ value: token });
-      setKey(Math.random());
+    const myuser = JSON.parse(localStorage.getItem("myuser"));
+    if (myuser) {
+      setUser({ value: myuser.token, email: myuser.email });
     }
+    setKey(Math.random());
   }, [router.query]);
   // Logout
   const logout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("myuser");
     setUser({ value: null });
     setKey(Math.random());
     router.push("/");
@@ -61,6 +62,9 @@ function MyApp({ Component, pageProps }) {
   // .add to cart
 
   const addToCart = (itemCode, qty, price, name, size, variant) => {
+    if (Object.keys(cart).length == 0) {
+      setKey(Math.random());
+    }
     let newCart = cart;
     if (itemCode in cart) {
       newCart[itemCode].qty = cart[itemCode].qty + 1;
@@ -72,7 +76,8 @@ function MyApp({ Component, pageProps }) {
   };
   // buyNow
   const buyNow = (itemCode, qty, price, name, size, variant) => {
-    let newCart = { itemCode: { qty: 1, price, name, size, variant } };
+    let newCart = {};
+    newCart[itemCode] = { qty: 1, price, name, size, variant };
 
     setCart(newCart);
     saveToCart(newCart);
@@ -108,8 +113,7 @@ function MyApp({ Component, pageProps }) {
         waitingTime={500}
         onLoaderFinished={() => setProgress(0)}
       />
-
-      
+      {key && (
         <Navbar
           logout={logout}
           user={user}
@@ -120,18 +124,19 @@ function MyApp({ Component, pageProps }) {
           clearCart={clearCart}
           subTotal={subTotal}
         />
+      )}
       
-
-      <Component
-        buyNow={buyNow}
-        cart={cart}
-        addToCart={addToCart}
-        removeFromCart={removeFromCart}
-        clearCart={clearCart}
-        subTotal={subTotal}
-        {...pageProps}
-      />
-
+        <Component
+          buyNow={buyNow}
+          user={user}
+          cart={cart}
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
+          clearCart={clearCart}
+          subTotal={subTotal}
+          {...pageProps}
+        />
+      
       {/* <Footer /> */}
     </>
   );
