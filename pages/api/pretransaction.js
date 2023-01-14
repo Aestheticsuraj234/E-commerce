@@ -6,7 +6,6 @@ const PaytmCheckSum = require("paytmchecksum");
 import pincode from "../../pincode.json";
 import { resolve } from "path";
 
-
 const handler = async (req, res) => {
   if (req.method == "POST") {
     // check if the pincode is serviceable
@@ -44,7 +43,7 @@ const handler = async (req, res) => {
         });
         return;
       }
-      if (product.price !== cart[item].price) {
+      if (product.price != cart[item].price) {
         console.log(cart[item].price);
         res.status(200).json({
           success: false,
@@ -55,6 +54,8 @@ const handler = async (req, res) => {
         return;
       }
     }
+    console.log("sumTotal", sumTotal);
+    console.log("subTotal", req.body.subTotal);
     if (sumTotal !== req.body.subTotal) {
       res.status(200).json({
         success: false,
@@ -99,8 +100,8 @@ const handler = async (req, res) => {
       city: req.body.city,
       state: req.body.state,
       pincode: req.body.pincode,
-      phone:req.body.phone,
-      amount: 30, //updated very soon by req.body.subTotal
+      phone: req.body.phone,
+      amount: req.body.subTotal, //updated very soon by req.body.subTotal
       products: req.body.cart,
     });
     await order.save();
