@@ -1,13 +1,12 @@
 import React, { useEffect,useState } from "react";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import Link from "next/Link";
 
-const orders = () => {
+const Orders = () => {
   const router = useRouter();
-  const [orders, setorders] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -19,7 +18,7 @@ const orders = () => {
         },
       });
       let res = a.json();
-      setorders(res.orders);
+      setOrders(res.orders);
     };
     if (!localStorage.getItem("token")) {
       router.push("/");
@@ -82,4 +81,4 @@ const orders = () => {
   );
 };
 
-export default orders;
+export default Orders;

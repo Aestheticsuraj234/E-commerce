@@ -1,26 +1,47 @@
+const multer = require("multer");
+const upload = multer({
+  dest: "uploads/",
+  fileFilter: (req, file, cb) => {
+    if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+      return cb(
+        new Error("Invalid file format. Only jpg, jpeg, png are allowed."),
+        false
+      );
+    }
+    cb(null, true);
+  },
+});
 import connectDb from "../../middleware/mongoose";
 import Image from "../../models/Image";
-import multer from "multer";
-
-const storage = multer.memoryStorage();
-const upload = multer({ storage });
+import { check } from "express-validator";
+import { validationResult } from "express-validator";
 
 const handler = async (req, res) => {
+  connectDb();
   if (req.method === "POST") {
-    try {
-      const { imageName, buffer, mimetype } = req.file;
-      const image = new Image({
-        name: imageName,
-        data: buffer,
-        contentType: mimetype,
-      });
-      await image.save();
-      res.status(201).json({ message: "Image uploaded successfully", image });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Upload failed", error });
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
     }
+    const image = req.file;
+    const { imageName } = req.body;
+    if (!imageName) {
+      return res
+        .status(400)
+        .json({ errors: [{ msg: "imageName is required" }] });
+    }
+    const img = new Image({
+      name: imageName,
+      data: image,
+      contentType: image.mimetype,
+    });
+    console.log(img);
+  await  img.save();
+    res.status(201).json({ success: "Image uploaded successfully" });
   }
 };
 
-export default connectDb(upload.single("image"))(handler);
+export default upload.single('image') ([
+  check('imageName').not().isEmpty().withMessage("imageName is required"),
+  handler
+  ])

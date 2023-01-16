@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { useRouter } from "next/router";
 
-const forgot = () => {
+const Forgot = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
@@ -134,7 +134,7 @@ const forgot = () => {
                     Continue
                   </button>
                   {password != cpassword && (
-                    <span className="text-red-600">Password don't match</span>
+                    <span className="text-red-600">Password dont match</span>
                   )}
                   { password && password === cpassword && (
                     <span className="text-green-600">Password match</span>
@@ -201,4 +201,4 @@ const forgot = () => {
   );
 };
 
-export default forgot;
+export default Forgot;

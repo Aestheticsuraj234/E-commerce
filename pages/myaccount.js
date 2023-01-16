@@ -171,7 +171,7 @@ const MyAccount = () => {
         <div className="px-2 w-1/2">
           <div className=" mb-4">
             <label htmlFor="email" className="leading-7 text-sm text-gray-600">
-              Email (can't be changes if loggedin){" "}
+              Email (cant be changes if loggedin){" "}
               {user && user.token ? (
                 <input
                   value={user.email}

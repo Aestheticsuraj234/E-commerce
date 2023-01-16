@@ -1,9 +1,9 @@
 import React from 'react'
 
-const login = () => {
+const Login = () => {
   return (
     <div className='min-h-screen'>login</div>
   )
 }
 
-export default login
+export default Login

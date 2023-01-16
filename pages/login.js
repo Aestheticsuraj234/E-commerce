@@ -4,9 +4,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 
-const login = () => {
+const Login = () => {
   const router = useRouter();
-  
+
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -152,12 +152,12 @@ const login = () => {
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  <a
+                  <Link
                     href="/forgot"
                     className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
                     Forgot password?
-                  </a>
+                  </Link>
                 </div>
                 <button
                   type="submit"
@@ -167,12 +167,12 @@ const login = () => {
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Don’t have an account yet?{" "}
-                  <a
+                  <Link
                     href="/Signup"
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
                     Sign up
-                  </a>
+                  </Link>
                 </p>
               </form>
             </div>
@@ -183,4 +183,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

@@ -52,7 +52,7 @@ const carpets = ({ products }) => {
                       <div className="mt-1">
                         <p className="inline-flex">Reeds:</p>
                         {products[items].reeds.map((reed) => (
-                          <span className="border border-gray-300 px-1 mx-1">
+                          <span key={reed} className="border border-gray-300 px-1 mx-1">
                             {reed}
                           </span>
                         ))}
@@ -60,6 +60,7 @@ const carpets = ({ products }) => {
                       <div className="mt-1">
                         {products[items].color.map((color) => (
                           <button
+                          key={color}
                             className={`border-2 bg-${color}-600 rounded-full w-6 h-6`}
                           ></button>
                         ))}

@@ -7,7 +7,7 @@ import { FaGratipay } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const checkout = ({
+const Checkout = ({
   cart,
   addToCart,
   removeFromCart,
@@ -198,7 +198,7 @@ const checkout = ({
 
       <Script
         type="application/javascript"
-        src={`${process.env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`}
+        src={`${process.env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/Checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`}
         crossorigin="anonymous"
       />
 
@@ -224,7 +224,7 @@ const checkout = ({
         <div className="px-2 w-1/2">
           <div className=" mb-4">
             <label htmlFor="email" className="leading-7 text-sm text-gray-600">
-              Email (can't be changes if loggedin){" "}
+              Email cannot be changes if loggedin
               {user && user.token ? (
                 <input
                   value={user.email}
@@ -393,7 +393,7 @@ const checkout = ({
       </div>
 
       <div className="mx-[2.8] my-2">
-        <Link href={"/checkout"}>
+        <Link href={"/Checkout"}>
           <button
             disabled={disabled}
             onClick={initiatePayment}
@@ -407,4 +407,4 @@ const checkout = ({
   );
 };
 
-export default checkout;
+export default Checkout;

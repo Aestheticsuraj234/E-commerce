@@ -15,7 +15,7 @@ const Menuitems = [
     href: "/admin/allproducts",
   },
   {
-    title: "Image Uploader",
+    title: "Image View",
     icon: "upload-cloud",
     href: "/admin/imageuploader",
   },
