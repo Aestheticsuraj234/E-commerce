@@ -69,7 +69,7 @@ const handler = async (req, res) => {
     // check if the detials are valid
 
     if (
-      req.body.phone.length !== 10 ||
+      req.body.phone.length != 10 ||
       !Number.isInteger(Number(req.body.phone))
     ) {
       res.status(200).json({
@@ -80,7 +80,7 @@ const handler = async (req, res) => {
       return;
     }
     if (
-      req.body.pincode.length !== 6 ||
+      req.body.pincode.length != 6 ||
       !Number.isInteger(Number(req.body.pincode))
     ) {
       res.status(200).json({
@@ -97,12 +97,16 @@ const handler = async (req, res) => {
       name: req.body.name,
       orderId: req.body.oid,
       address: req.body.address,
+      paymentInfo:req.body.paymentInfo,
       city: req.body.city,
       state: req.body.state,
       pincode: req.body.pincode,
       phone: req.body.phone,
+      transactionid:req.body.transactionid,
       amount: req.body.subTotal, //updated very soon by req.body.subTotal
       products: req.body.cart,
+      Status:req.body.Status,
+      deliveryStatus:req.body.deliveryStatus
     });
     await order.save();
 

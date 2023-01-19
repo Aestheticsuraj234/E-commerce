@@ -6,12 +6,22 @@ import AllProducts from "../../src/components/dashboard/AllProducts";
 import { ThemeProvider } from "@mui/material/styles";
 import Product from "../../models/Product";
 import mongoose from "mongoose";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 import theme from "../../src/theme/theme";
 
 import FullLayout from "../../src/layouts/FullLayout";
+import { Router } from "next/router";
 
 export default function Index({products}) {
+  const router  = useRouter()
+  useEffect(() => {
+    if(!localStorage.getItem("myuser")){
+      router.push('/admin/login')
+    }
+  
+  }, [])
   return (
     <ThemeProvider theme={theme}>
       <style jsx global>{`

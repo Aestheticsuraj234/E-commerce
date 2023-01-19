@@ -24,6 +24,11 @@ const Menuitems = [
     icon: "shopping-bag",
     href: "/admin/allorders",
   },
+  {
+    title: "User",
+    icon: "user",
+    href: "/admin/user",
+  },
   
 ];
 

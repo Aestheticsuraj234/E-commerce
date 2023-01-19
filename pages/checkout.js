@@ -105,7 +105,6 @@ const Checkout = ({
 
   // initiatePayment
   const initiatePayment = async () => {
-    let subTotal;
     let oid = Math.floor(Math.random() * Date.now());
     // get the transaction token
     const data = {
@@ -115,6 +114,8 @@ const Checkout = ({
       email: email,
       name,
       address,
+      city,
+      state,
       pincode,
       phone,
     };

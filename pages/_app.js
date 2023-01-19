@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
     }
     const myuser = JSON.parse(localStorage.getItem("myuser"));
     if (myuser) {
-      setUser({ value: myuser.token, email: myuser.email });
+      setUser({ value: myuser.token, email: myuser.email ,role:myuser.role});
     }
     setKey(Math.random());
   }, [router.query]);
@@ -82,7 +82,7 @@ function MyApp({ Component, pageProps }) {
     setCart(newCart);
     saveToCart(newCart);
 
-    router.push("/checkout");
+    router.push("/Checkout");
   };
 
   // clear cart🛒🔎
@@ -128,6 +128,7 @@ function MyApp({ Component, pageProps }) {
       
         <Component
           buyNow={buyNow}
+          logout={logout}
           user={user}
           cart={cart}
           addToCart={addToCart}

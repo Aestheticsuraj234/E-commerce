@@ -12,6 +12,7 @@ const handler = async (req, res) => {
     const { name, email, address, pincode ,phone} = dbuser;
     
     res.status(200).json({ name, email, address, pincode ,phone});
+    
 
   } else {
     res.status(400).json({ error: "Error" });

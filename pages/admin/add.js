@@ -124,7 +124,7 @@ const Add = () => {
                   onChange={onChange}
                   value={form.color ? form.color : ""}
                   name="color"
-                  label="Color in (Hex)"
+                  label="Color"
                   variant="outlined"
                 />
                 <TextField

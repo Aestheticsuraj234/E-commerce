@@ -1,20 +1,170 @@
-import React from "react";
-import FeatherIcon from "feather-icons-react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import userimg from "../../../assets/images/users/user2.jpg";
+import FeatherIcon from "feather-icons-react";
+import Link from "next/link";
+
 import {
   Box,
   Menu,
   Typography,
-  Link,
   ListItemButton,
   List,
   ListItemText,
   Button,
   Divider,
 } from "@mui/material";
-const ProfileDD = () => {
-  const [anchorEl4, setAnchorEl4] = React.useState(null);
+
+const ProfileDD = ({ logout }) => {
+  const [anchorEl4, setAnchorEl4] = useState(null);
+  const [name, setName] = useState("");
+  const [user, setUser] = useState({ value: null });
+
+  const emojis = [
+    "😀",
+    "😃",
+    "😄",
+    "😁",
+    "😆",
+    "😅",
+    "😂",
+    "🤣",
+    "😊",
+    "😇",
+    "🙂",
+    "🙃",
+    "😉",
+    "😌",
+    "😍",
+    "😘",
+    "😗",
+    "😙",
+    "😚",
+    "😋",
+    "😛",
+    "😝",
+    "😜",
+    "🤪",
+    "🤨",
+    "🧐",
+    "🤓",
+    "😎",
+    "🤩",
+    "😏",
+    "🙂",
+    "😔",
+    "😕",
+    "😲",
+    "😷",
+    "🤕",
+    "🤢",
+    "🤮",
+    "😵",
+    "🤒",
+    "🤧",
+    "🤕",
+    "🤑",
+    "🤠",
+    "🤡",
+    "🤥",
+    "🤫",
+    "🤭",
+    "🧐",
+    "🤓",
+    "😈",
+    "👿",
+    "👹",
+    "👺",
+    "💀",
+    "👻",
+    "👽",
+    "🤖",
+    "💩",
+    "😺",
+    "😸",
+    "😹",
+    "😻",
+    "😼",
+    "😽",
+    "🙀",
+    "😿",
+    "😾",
+    "🙈",
+    "🙉",
+    "🙊",
+    "💋",
+    "💘",
+    "💓",
+    "💔",
+    "💕",
+    "💖",
+    "💗",
+    "💙",
+    "💚",
+    "💛",
+    "💜",
+    "💝",
+    "💞",
+    "💟",
+    "💠",
+    "💡",
+    "💢",
+    "💣",
+    "💤",
+    "💥",
+    "💦",
+    "💧",
+    "💨",
+    "💩",
+    "💪",
+    "💫",
+    "💬",
+    "💭",
+    "💮",
+    "💯",
+    "🕳️",
+    "🕶️",
+    "🕷️",
+    "🕸️",
+    "🕹️",
+    "🕺",
+    "🖤",
+    "🗣️",
+    "🗨️",
+    "🗯️",
+    "🛐",
+    "🛑",
+    "🛒",
+    "🛕",
+  ];
+
+  // Generate a random index
+  const randomIndex = Math.floor(Math.random(1) * emojis.length);
+
+  useEffect(() => {
+    const myuser = JSON.parse(localStorage.getItem("myuser"));
+    if (!myuser) {
+      router.push("/");
+    }
+    if (myuser && myuser.token) {
+      setUser(myuser);
+      fetchData(myuser.token);
+    }
+  }, []);
+
+  const fetchData = async (token) => {
+    let data = { token: token };
+    let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getUser`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    let res = await a.json();
+
+    setName(res.name);
+  };
 
   const handleClick4 = (event) => {
     setAnchorEl4(event.currentTarget);
@@ -33,13 +183,6 @@ const ProfileDD = () => {
         onClick={handleClick4}
       >
         <Box display="flex" alignItems="center">
-          <Image
-            src={userimg}
-            alt={userimg}
-            width="30"
-            height="30"
-            className="roundedCircle"
-          />
           <Box
             sx={{
               display: {
@@ -55,7 +198,7 @@ const ProfileDD = () => {
               fontWeight="400"
               sx={{ ml: 1 }}
             >
-              Hi,
+              {emojis[randomIndex]} Hi,
             </Typography>
             <Typography
               variant="h5"
@@ -64,7 +207,7 @@ const ProfileDD = () => {
                 ml: 1,
               }}
             >
-              Julia
+              {name}
             </Typography>
             <FeatherIcon icon="chevron-down" width="20" height="20" />
           </Box>
@@ -89,24 +232,22 @@ const ProfileDD = () => {
               aria-label="secondary mailbox folder"
               onClick={handleClose4}
             >
-              <ListItemButton>
-                <ListItemText primary="Edit Profile" />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemText primary="Account" />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemText primary="Change Password" />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemText primary="My Settings" />
-              </ListItemButton>
+              <Link href="../myaccount">
+                <ListItemButton>
+                  <ListItemText primary="Edit Profile" />
+                </ListItemButton>
+              </Link>
             </List>
           </Box>
           <Divider />
           <Box p={2}>
-            <Link to="/">
-              <Button fullWidth variant="outline" color="primary">
+            <Link href="/">
+              <Button
+                onClick={logout}
+                fullWidth
+                variant="container"
+                color="error"
+              >
                 Logout
               </Button>
             </Link>

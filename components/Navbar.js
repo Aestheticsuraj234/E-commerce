@@ -64,6 +64,12 @@ const Navbar = ({
                 </li>
               </Link>
 
+           {  user.role==="admin" ? <Link href={"/admin"}>
+                <li className="py-1 hover:text-indigo-900 text-600 text-sm font-semibold ">
+                  Admin Panel
+                </li>
+              </Link> : ""}
+
               <li
                 onClick={logout}
                 className="py-1 hover:text-indigo-900 text-600 text-sm font-semibold "
@@ -81,7 +87,7 @@ const Navbar = ({
       >
         <Link href={"/"}>
           <div className="logo  mr-auto md:mx-5 cursor-pointer">
-            <img src="/logo.png" alt="" className="w-full h-12" />
+            <img src="/logo.png" alt="" className="w-full h-12 rounded-full" />
           </div>
         </Link>
         <div className="nav">
@@ -96,12 +102,7 @@ const Navbar = ({
                 <li>Product</li>{" "}
               </a>
             </Link>
-            <Link href={"/blog"}>
-              <a>
-                <li>Blog</li>{" "}
-              </a>
-            </Link>
-            <Link href={"/account"}>
+            <Link href={"/myaccount"}>
               <a>
                 <li>Account</li>{" "}
               </a>
@@ -201,7 +202,7 @@ const Navbar = ({
             <div className="font-bold my-2 ">SubTotal : ${subTotal}</div>
 
             <div className="flex">
-              <Link href={"/checkout"}>
+              <Link href={"/Checkout"}>
                 <button
                   disabled={Object.keys(cart).length === 0}
                   className=" disabled:bg-pink-300 flex mx-2 mt-6 text-pink-500 bg-gray-100 border-0 py-2 px-2 focus:outline-none font-semibold hover:bg-gray-200 rounded text-sm "

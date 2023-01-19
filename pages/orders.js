@@ -12,7 +12,7 @@ const Orders = () => {
     const fetchOrders = async () => {
       let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/myorder`, {
         method: "POST",
-        body: JSON.stringify({ token: localStorage.getItem("token") }),
+        body: JSON.stringify({ token: localStorage.getItem("myuser") }),
         headers: {
           "Content-Type": "application/json",
         },
@@ -20,7 +20,7 @@ const Orders = () => {
       let res = a.json();
       setOrders(res.orders);
     };
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem("myuser")) {
       router.push("/");
     } else {
       fetchOrders();

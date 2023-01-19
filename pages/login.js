@@ -44,7 +44,7 @@ const Login = () => {
     if (response.success) {
       localStorage.setItem(
         "myuser",
-        JSON.stringify({ token: response.token, email: response.email })
+        JSON.stringify({ token: response.token, email: response.email,role:response.role })
       );
       toast.success("🦄 You logged in Successfully!", {
         position: "top-left",
