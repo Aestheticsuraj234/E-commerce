@@ -2,8 +2,6 @@ import Link from "next/link";
 import Product from "../models/Product";
 import mongoose from "mongoose";
 import ProductBanner from "../components/ProductBanner";
-import Image from "next/image";
-import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   slideIn,

@@ -48,6 +48,7 @@ export default function Home() {
             >
               Browse Product
             </motion.a>
+            
           </div>
           <div
             variants={staggerContainer}
