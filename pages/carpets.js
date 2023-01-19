@@ -4,13 +4,23 @@ import mongoose from "mongoose";
 import ProductBanner from "../components/ProductBanner";
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  slideIn,
+  fadeIn,
+  staggerContainer,
+  textVariant,
+} from "../utils/motion";
 
 const Carpets = ({ products }) => {
   console.log(products);
   return (
     <div>
       <section className="bg-gradient-to-r from-indigo-200 via-red-200 to-lime-100">
-        <div className="container px-5 py-12 mx-auto">
+        <motion.div   variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.25 }} className="container px-5 py-12 mx-auto">
           <ProductBanner />
           <h1 className="font-extrabold py-12 text-gray-800 text-center text-xl">
             Top Product
@@ -77,7 +87,7 @@ const Carpets = ({ products }) => {
               );
             })}
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
