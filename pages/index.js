@@ -43,7 +43,7 @@ export default function Home() {
 
             <motion.a
               variants={fadeIn('up', 'tween', 0.3, 1)}
-              onClick={() => router.push("/carpets")}
+              onClick={() => router.push("/Carpets")}
               className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 rounded-lg hover:bg-gray-100 shadow-xl focus:ring-4 focus:ring-gray-100 dark:text-[#3B185F] dark:border-gray-700 dark:bg-gray-100 cursor-pointer "
             >
               Browse Product
