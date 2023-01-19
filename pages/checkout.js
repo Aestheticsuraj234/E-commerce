@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Link from "next/Link";
+import Link from "next/link";
 import Head from "next/head";
 import Script from "next/script";
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
