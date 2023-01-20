@@ -35,19 +35,7 @@ const Checkout = ({
     }
   }, []);
 
-  useEffect(() => {
-    if (
-      name.length > 3 &&
-      email.length > 3 &&
-      phone.length > 3 &&
-      pincode.length > 3 &&
-      address.length > 3
-    ) {
-      setDisabled(false);
-    } else {
-      setDisabled(true);
-    }
-  }, [name, email, phone, pincode, address]);
+
 
   const fetchData = async (token) => {
     let data = { token: token };

@@ -11,7 +11,6 @@ import {
 } from "../utils/motion";
 
 const Carpets = ({ products }) => {
-  console.log(products);
   return (
     <div>
       <section className="bg-gradient-to-r from-indigo-200 via-red-200 to-lime-100">
@@ -24,7 +23,7 @@ const Carpets = ({ products }) => {
             Top Product
           </h1>
 
-          <div className=" flex m-auto  flex-wrap  space-y-4 h-full w-full space-x-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 m-auto h-full w-full ">
             {Object.keys(products).map((items) => {
               return (
                 <Link
@@ -32,10 +31,10 @@ const Carpets = ({ products }) => {
                   passHref={true}
                   href={`/products/${products[items].slug}`}
                 >
-                  <div className="w-60 h-full max-w-sm rounded-lg shadow-lg  border-2 bg-gradient-to-r from-pink-100 via-purple-100 to-indigo-100 ">
+                  <div className="w-60 h-full  rounded-lg shadow-lg  border-2 bg-gradient-to-r from-pink-100 via-purple-100 to-indigo-100 ">
                     <a href="#">
                       <img
-                        className="p-3 rounded-t-lg object-contain h-48 mx-auto shadow-md m-1 hover:scale-x-100 hover:transition-all hover:animate-bounce hover:translate-y-2"
+                        className="p-3 rounded-t-lg object-contain h-48 mx-auto shadow-md m-1 hover:scale-x-100 hover:transition-all hover:translate-y-2"
                         src={products[items].img}
                         alt="product image"
                       />
