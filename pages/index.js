@@ -42,13 +42,12 @@ export default function Home() {
             </motion.p>
 
             <motion.a
-              variants={fadeIn('up', 'tween', 0.3, 1)}
+              variants={fadeIn("up", "tween", 0.3, 1)}
               onClick={() => router.push("/carpets")}
               className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 rounded-lg hover:bg-gray-100 shadow-xl focus:ring-4 focus:ring-gray-100 dark:text-[#3B185F] dark:border-gray-700 dark:bg-gray-100 cursor-pointer "
             >
               Browse Product
             </motion.a>
-
           </div>
           <div
             variants={staggerContainer}
@@ -58,7 +57,7 @@ export default function Home() {
             className=" justify-center items-center lg:mt-0 lg:col-span-5 lg:flex"
           >
             <motion.img
-              variants={fadeIn('up', 'tween', 0.3, 1)}
+              variants={fadeIn("up", "tween", 0.3, 1)}
               src="/hero.png"
               className=" h-80 w-80 md:h-full md:w-full"
               alt="mockup"
@@ -99,15 +98,18 @@ export default function Home() {
               className="lg:mt-0 lg:col-span-5 lg:flex"
             >
               <motion.img
-                variants={fadeIn('up', 'tween', 0.3, 1)}
+                variants={fadeIn("up", "tween", 0.3, 1)}
                 src="/feature.png"
                 className="object-cover self-center "
                 alt="mckup"
               />
             </motion.div>
           </motion.div>
-          <div    className="flex flex-wrap -m-4">
-            <motion.div variants={fadeIn('up', 'tween', 0.3, 1)} className="xl:w-1/3 md:w-1/2 p-4">
+          <div className="flex flex-wrap -m-4">
+            <motion.div
+              variants={fadeIn("up", "tween", 0.3, 1)}
+              className="xl:w-1/3 md:w-1/2 p-4"
+            >
               <div className="border border-white-700 border-opacity-75 p-6 bg-white bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg">
                 <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-gray-100 text-pink-400 mb-4">
                   <svg
@@ -134,7 +136,10 @@ export default function Home() {
                 </p>
               </div>
             </motion.div>
-            <motion.div variants={fadeIn('up', 'tween', 0.3, 1)} className="xl:w-1/3 md:w-1/2 p-4">
+            <motion.div
+              variants={fadeIn("up", "tween", 0.3, 1)}
+              className="xl:w-1/3 md:w-1/2 p-4"
+            >
               <div className="border border-white-700 border-opacity-75 p-6 bg-white bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg">
                 <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-gray-100 text-pink-400 mb-4">
                   <svg
@@ -163,7 +168,10 @@ export default function Home() {
                 </p>
               </div>
             </motion.div>
-            <motion.div variants={fadeIn('up', 'tween', 0.3, 1)} className="xl:w-1/3 md:w-1/2 p-4">
+            <motion.div
+              variants={fadeIn("up", "tween", 0.3, 1)}
+              className="xl:w-1/3 md:w-1/2 p-4"
+            >
               <div className="border border-white-700 border-opacity-75 p-6 bg-white bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg">
                 <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-gray-100 text-pink-400 mb-4">
                   <svg

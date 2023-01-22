@@ -82,7 +82,7 @@ function MyApp({ Component, pageProps }) {
     setCart(newCart);
     saveToCart(newCart);
 
-    router.push("/Checkout");
+    router.push("/checkout");
   };
 
   // clear cart🛒🔎

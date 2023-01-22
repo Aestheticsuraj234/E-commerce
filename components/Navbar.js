@@ -157,7 +157,7 @@ const Navbar = ({
             <h2 className="font-bold text-xl text-center"> Shoping-Cart</h2>
             <span
               onClick={toggleCart}
-              className="absolute right-2 top-2  cursor-pointer text-2xl  text-pink-500"
+              className="absolute right-2 top-2  cursor-pointer text-2xl  text-indigo-500"
             >
               <AiFillCloseCircle />
             </span>
@@ -187,7 +187,7 @@ const Navbar = ({
                               cart[k].variant
                             );
                           }}
-                          className="cursor-pointer text-pink-300"
+                          className="cursor-pointer text-indigo-300"
                         />
 
                         <span className="mx-2 text-sm">{cart[k].qty} </span>
@@ -203,7 +203,7 @@ const Navbar = ({
                               cart[k].variant
                             );
                           }}
-                          className=" cursor-pointer  text-pink-500"
+                          className=" cursor-pointer  text-indigo-500"
                         />
                       </div>
                     </div>
@@ -217,7 +217,7 @@ const Navbar = ({
               <Link href={"/checkout"}>
                 <button
                   disabled={Object.keys(cart).length === 0}
-                  className=" disabled:bg-pink-300 flex mx-2 mt-6 text-pink-500 bg-gray-100 border-0 py-2 px-2 focus:outline-none font-semibold hover:bg-gray-200 rounded text-sm "
+                  className=" disabled:bg-indigo-300 flex mx-2 mt-6 text-indigo-500 bg-gray-100 border-0 py-2 px-2 focus:outline-none font-semibold hover:bg-gray-200 rounded text-sm "
                 >
                   <BsFillBagCheckFill className="m-1" /> Checkout
                 </button>
@@ -225,7 +225,7 @@ const Navbar = ({
               <button
                 disabled={Object.keys(cart).length === 0}
                 onClick={clearCart}
-                className=" disabled:bg-gray-200 flex mx-2 mt-6 text-pink-3 bg-gray-100 border-0 py-2 px-2 focus:outline-none hover:bg-gray-200-600 rounded text-sm  font-semibold"
+                className=" disabled:bg-gray-200 flex mx-2 mt-6 text-indigo-3 bg-gray-100 border-0 py-2 px-2 focus:outline-none hover:bg-gray-200-600 rounded text-sm  font-semibold"
               >
                 Clear Cart
               </button>

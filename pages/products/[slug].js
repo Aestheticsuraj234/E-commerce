@@ -6,8 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Post = ({ buyNow, addToCart, product, variants }) => {
-  console.log(product, variants);
-
+  
   const router = useRouter();
   const { slug } = router.query;
   const [pin, setpin] = useState();
@@ -16,7 +15,7 @@ const Post = ({ buyNow, addToCart, product, variants }) => {
   const [color, setcolor] = useState(product.color);
 
   useEffect(() => {
-    console.log(product.availableQty);
+    
     setcolor(product.color);
     setReeds(product.reeds);
   }, [router.query]);

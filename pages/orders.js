@@ -32,8 +32,8 @@ const Orders = () => {
       <h1 className="font-bold text-xl p-8">My Orders</h1>
 
       <div className="overflow-x-auto relative shadow-md sm:rounded-lg m-3 rounded-md">
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-sm text-left text-gray-500">
+          <thead className="text-xs text-gray-900 uppercase bg-indigo-200">
             <tr>
               <th scope="col" className="py-3 px-6">
                 #Order Id
@@ -54,19 +54,19 @@ const Orders = () => {
               return (
                 <tr
                   key={item._id}
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                  className="bg-indigo-300 border-b"
                 >
-                  <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
+                  <td className="py-4 px-6 font-semibold text-gray-900 ">
                     {item.orderId}
                   </td>
 
-                  <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
+                  <td className="py-4 px-6 font-semibold text-gray-900 ">
                     {item.email}
                   </td>
-                  <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
+                  <td className="py-4 px-6 font-semibold text-gray-900 ">
                     {item.amount}
                   </td>
-                  <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
+                  <td className="py-4 px-6 font-semibold text-gray-900 ">
                     <Link href={"/order/?id=" + item._id}>
                       <a>Details</a>
                     </Link>

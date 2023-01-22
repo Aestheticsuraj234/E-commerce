@@ -382,7 +382,7 @@ const Checkout = ({
       </div>
 
       <div className="mx-[2.8] my-2">
-        <Link href={"/Checkout"}>
+        <Link href={"/checkout"}>
           <button
             disabled={disabled}
             onClick={initiatePayment}

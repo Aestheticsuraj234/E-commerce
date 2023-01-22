@@ -24,12 +24,12 @@ const MyOrder = ({ order, clearCart }) => {
 
   return (
     <div>
-      <section className="text-gray-400 bg-gray-900 body-font overflow-hidden">
+      <section className="text-gray-200 bg-gray-900 body-font overflow-hidden">
         <div className="container px-5 py-24 mx-auto">
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                Rollend.com
+                Rollend Trade company
               </h2>
               <h1 className="text-white text-3xl title-font font-medium mb-4">
                 Order Id - #{order.orderId}
@@ -88,7 +88,7 @@ const MyOrder = ({ order, clearCart }) => {
             <img
               alt="ecommerce"
               className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-              src="https://dummyimage.com/400x400"
+              src="/delivery.svg"
             />
           </div>
         </div>
