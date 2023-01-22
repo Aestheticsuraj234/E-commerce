@@ -1,11 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  slideIn,
-  fadeIn,
-  staggerContainer,
-  textVariant,
-} from "../utils/motion";
+import { fadeIn, staggerContainer, textVariant } from "../utils/motion";
 
 const ProductBanner = () => {
   return (
@@ -40,7 +35,7 @@ const ProductBanner = () => {
         </motion.div>
         <div className=" justify-center items-center lg:mt-0 lg:col-span-5 lg:flex">
           <motion.img
-           variants={fadeIn('up', 'tween', 0.3, 1)}
+            variants={fadeIn("up", "tween", 0.3, 1)}
             src="/Product.png"
             className=" h-80 w-80 md:h-full md:w-full"
             alt="mockup"

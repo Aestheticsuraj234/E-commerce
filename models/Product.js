@@ -18,7 +18,7 @@ const ProductSchema = new mongoose.Schema(
 
     density: { type: String },
 
-    threads: { type: String, required: true },
+    threads: { type: String, },
 
     color: { type: String }, //
 
