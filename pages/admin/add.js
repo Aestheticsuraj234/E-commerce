@@ -9,13 +9,6 @@ import {
   Grid,
   Stack,
   TextField,
-  Checkbox,
-  FormGroup,
-  FormControlLabel,
-  RadioGroup,
-  Radio,
-  FormLabel,
-  FormControl,
   Button,
 } from "@mui/material";
 import BaseCard from "../../src/components/baseCard/BaseCard";
@@ -45,7 +38,6 @@ const Add = () => {
       if (!res.ok) {
         throw new Error(response.error);
       }
-      console.log(response);
       setForm({}); // resetting the form
       toast.success("Product added successfully", {
         position: "top-left",
@@ -86,7 +78,7 @@ const Add = () => {
           theme="light"
         />
         <h1 className="text-2xl text-gray-600 text-center font-bold">
-          Add Your Product from Here
+          Add Any Product from Here
         </h1>
         <Grid container spacing={0}>
           <Grid item xs={12} lg={12}>
