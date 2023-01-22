@@ -102,21 +102,41 @@ const Navbar = ({
             />
           </div>
         </Link>
-        <div className="nav">
-          <ul className="flex items-center space-x-6 font-semibold md:text-md text-gray-800  ">
+        <div className="nav  ">
+          <ul className="flex flex-wrap md:flex-no-wrap overflow-x-auto w-full items-center space-x-6 font-semibold md:text-md text-gray-800  ">
             <Link href={"/"}>
               <a>
-                <li>Home</li>{" "}
+                <li>All</li>{" "}
               </a>
             </Link>
             <Link href={"/carpets"}>
               <a>
-                <li>Product</li>{" "}
+                <li>Carpets</li>{" "}
               </a>
             </Link>
-            <Link href={"/myaccount"}>
+            <Link href={"/beauty"}>
               <a>
-                <li>Account</li>{" "}
+                <li>Beauty</li>{" "}
+              </a>
+            </Link>
+            <Link href={"/electronicm"}>
+              <a>
+                <li>Electronic & Mobile</li>{" "}
+              </a>
+            </Link>
+            <Link href={"/health"}>
+              <a>
+                <li>Health</li>{" "}
+              </a>
+            </Link>
+            <Link href={"/gems"}>
+              <a>
+                <li>Gems</li>{" "}
+              </a>
+            </Link>
+            <Link href={"/clothes"}>
+              <a>
+                <li>Clothes</li>{" "}
               </a>
             </Link>
           </ul>

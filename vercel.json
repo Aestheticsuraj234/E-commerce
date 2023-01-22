@@ -8,6 +8,13 @@
       { "src": "/api/(.*)", "dest": "/api/$1" }
     ],
     "env": {
-      "MONGO_URL": "mongodb://localhost:27017/rollend"
+      "MONGO_URI": "mongodb+srv://suraj:8826545277@cluster0.qa5ziat.mongodb.net/rollend-ecommerce?retryWrites=true&w=majority",
+      "NEXT_PUBLIC_HOST":"http://localhost:3000",
+      "NEXT_PUBLIC_PAYTM_HOST":"https://securegw.paytm.in",
+      "NEXT_PUBLIC_PAYTM_MID":"lWqTNU55137697892470",
+      "NEXT_PUBLIC_PAYTM_MKEY":"euwedhquihduihduuuee",
+      "AES_SECRET":"@9643279021",
+      "JWT_SECRET":"1234567890987654321s",
+      "NODE_ENV":"production"
     }
   }

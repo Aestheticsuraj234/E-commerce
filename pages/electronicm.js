@@ -10,21 +10,34 @@ import {
   textVariant,
 } from "../utils/motion";
 
-const Carpets = ({ products }) => {
+const Electronicm = ({ products }) => {
   return (
     <div>
-      <section className="bg-gradient-to-r from-indigo-200 via-red-200 to-lime-100">
-        <motion.div   variants={staggerContainer}
+       <section className="bg-gradient-to-r min-h-screen from-indigo-200 via-red-200 to-lime-100">
+        <motion.div
+          variants={staggerContainer}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: false, amount: 0.25 }} className="container px-5 py-12 mx-auto">
-          <ProductBanner />
+          viewport={{ once: false, amount: 0.25 }}
+          className="container px-5 py-12 mx-auto"
+        >
+          {/* <ProductBanner /> */}
           <h1 className="font-extrabold py-12 text-gray-800 text-center text-xl">
             Top Product
           </h1>
 
+          {Object.keys(products).length === 0 && (
+            <h1 className="font-bold text-center text-4xl ">
+              Sorry All the Electronic Products are Out of Stock
+            </h1>
+          )}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 m-auto h-full w-full ">
             {Object.keys(products).map((items) => {
+              let description = products[items].description.slice(0, 50);
+              description =
+                description.length < products[items].description.length
+                  ? description + "..."
+                  : description;
               return (
                 <Link
                   key={products[items]._id}
@@ -58,23 +71,19 @@ const Carpets = ({ products }) => {
                           Add to cart
                         </a>
                       </div>
-                      <div className="mt-1">
-                        <p className="inline-flex">Reeds:</p>
-                        {products[items].reeds.map((reed) => (
-                          <span
-                            key={reed}
-                            className="border border-pink-500 rounded-md px-1 mx-1"
-                          >
-                            {reed}
-                          </span>
-                        ))}
-                      </div>
 
+                      <a href="#">
+                        <h5 className="text-md font-semibold tracking-tight  dark:text-gray-900">
+                          <h5 className="text-md font-semibold tracking-tight  dark:text-gray-900">
+                            {description}
+                          </h5>
+                        </h5>
+                      </a>
                       <div className="mt-1">
                         {products[items].color.map((color) => (
                           <button
                             key={color}
-                            className={`border-2 ${`bg-${color}-600` || `bg-${color}`} hover:bg-${color}-500 rounded-full w-4 h-4`}
+                            className={`border-2 ${`bg-${color}`} hover:bg-${color}-500 rounded-full w-4 h-4`}
                           ></button>
                         ))}
                       </div>
@@ -93,46 +102,46 @@ export async function getServerSideProps(context) {
   if (!mongoose.connections[0].readyState) {
     mongoose.connect(process.env.MONGO_URI);
   }
-  let products = await Product.find({category:'carpets'});
-  let carpets = {};
+  let products = await Product.find({ category: "electronics" });
+  let Electronicm = {};
 
   for (let item of products) {
-    if (item.title in carpets) {
+    if (item.title in Electronicm) {
       if (
-        !carpets[item.title].color.includes(item.color) &&
+        !Electronicm[item.title].color.includes(item.color) &&
         item.availableQty > 0
       ) {
-        carpets[item.title].color.push(item.color);
+        Electronicm[item.title].color.push(item.color);
       }
       if (
-        !carpets[item.title].reeds.includes(item.reeds) &&
+        !Electronicm[item.title].reeds.includes(item.reeds) &&
         item.availableQty > 0
       ) {
-        carpets[item.title].reeds.push(item.reeds);
+        Electronicm[item.title].reeds.push(item.reeds);
       }
       if (
-        !carpets[item.title].threads.includes(item.threads) &&
+        !Electronicm[item.title].threads.includes(item.threads) &&
         item.availableQty > 0
       ) {
-        carpets[item.title].threads.push(item.threads);
+        Electronicm[item.title].threads.push(item.threads);
       }
     } else {
-      carpets[item.title] = JSON.parse(JSON.stringify(item));
+      Electronicm[item.title] = JSON.parse(JSON.stringify(item));
       if (item.availableQty > 0) {
-        carpets[item.title].color = [item.color];
-        carpets[item.title].reeds = [item.reeds];
-        carpets[item.title].threads = [item.threads];
+        Electronicm[item.title].color = [item.color];
+        Electronicm[item.title].reeds = [item.reeds];
+        Electronicm[item.title].threads = [item.threads];
       } else {
-        carpets[item.title].color = [];
-        carpets[item.title].reeds = [];
-        carpets[item.title].threads = [];
+        Electronicm[item.title].color = [];
+        Electronicm[item.title].reeds = [];
+        Electronicm[item.title].threads = [];
       }
     }
   }
 
   return {
-    props: { products: JSON.parse(JSON.stringify(carpets)) }, // will be passed to the page component as props
+    props: { products: JSON.parse(JSON.stringify(Electronicm)) }, // will be passed to the page component as props
   };
 }
 
-export default Carpets;
+export default Electronicm;

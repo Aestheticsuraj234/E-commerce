@@ -10,19 +10,20 @@ import {
   textVariant,
 } from "../utils/motion";
 
-const Carpets = ({ products }) => {
+const Health = ({ products }) => {
   return (
     <div>
-      <section className="bg-gradient-to-r from-indigo-200 via-red-200 to-lime-100">
+     <section className="bg-gradient-to-r min-h-screen from-indigo-200 via-red-200 to-lime-100">
         <motion.div   variants={staggerContainer}
           initial="hidden"
           whileInView="show"
           viewport={{ once: false, amount: 0.25 }} className="container px-5 py-12 mx-auto">
-          <ProductBanner />
+          {/* <ProductBanner /> */}
           <h1 className="font-extrabold py-12 text-gray-800 text-center text-xl">
             Top Product
           </h1>
 
+            {Object.keys(products).length === 0 && <h1 className="font-bold text-center text-4xl ">Sorry All the Health Products are Out of Stock</h1>}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 m-auto h-full w-full ">
             {Object.keys(products).map((items) => {
               return (
@@ -58,26 +59,12 @@ const Carpets = ({ products }) => {
                           Add to cart
                         </a>
                       </div>
-                      <div className="mt-1">
-                        <p className="inline-flex">Reeds:</p>
-                        {products[items].reeds.map((reed) => (
-                          <span
-                            key={reed}
-                            className="border border-pink-500 rounded-md px-1 mx-1"
-                          >
-                            {reed}
-                          </span>
-                        ))}
-                      </div>
 
-                      <div className="mt-1">
-                        {products[items].color.map((color) => (
-                          <button
-                            key={color}
-                            className={`border-2 ${`bg-${color}-600` || `bg-${color}`} hover:bg-${color}-500 rounded-full w-4 h-4`}
-                          ></button>
-                        ))}
-                      </div>
+                      <a href="#">
+                        <h5 className="text-md font-semibold tracking-tight  dark:text-gray-900">
+                          {products[items].description}
+                        </h5>
+                      </a>
                     </div>
                   </div>
                 </Link>
@@ -93,46 +80,46 @@ export async function getServerSideProps(context) {
   if (!mongoose.connections[0].readyState) {
     mongoose.connect(process.env.MONGO_URI);
   }
-  let products = await Product.find({category:'carpets'});
-  let carpets = {};
+  let products = await Product.find({category:"health"});
+  let Health = {};
 
   for (let item of products) {
-    if (item.title in carpets) {
+    if (item.title in Health) {
       if (
-        !carpets[item.title].color.includes(item.color) &&
+        !Health[item.title].color.includes(item.color) &&
         item.availableQty > 0
       ) {
-        carpets[item.title].color.push(item.color);
+        Health[item.title].color.push(item.color);
       }
       if (
-        !carpets[item.title].reeds.includes(item.reeds) &&
+        !Health[item.title].reeds.includes(item.reeds) &&
         item.availableQty > 0
       ) {
-        carpets[item.title].reeds.push(item.reeds);
+        Health[item.title].reeds.push(item.reeds);
       }
       if (
-        !carpets[item.title].threads.includes(item.threads) &&
+        !Health[item.title].threads.includes(item.threads) &&
         item.availableQty > 0
       ) {
-        carpets[item.title].threads.push(item.threads);
+        Health[item.title].threads.push(item.threads);
       }
     } else {
-      carpets[item.title] = JSON.parse(JSON.stringify(item));
+      Health[item.title] = JSON.parse(JSON.stringify(item));
       if (item.availableQty > 0) {
-        carpets[item.title].color = [item.color];
-        carpets[item.title].reeds = [item.reeds];
-        carpets[item.title].threads = [item.threads];
+        Health[item.title].color = [item.color];
+        Health[item.title].reeds = [item.reeds];
+        Health[item.title].threads = [item.threads];
       } else {
-        carpets[item.title].color = [];
-        carpets[item.title].reeds = [];
-        carpets[item.title].threads = [];
+        Health[item.title].color = [];
+        Health[item.title].reeds = [];
+        Health[item.title].threads = [];
       }
     }
   }
 
   return {
-    props: { products: JSON.parse(JSON.stringify(carpets)) }, // will be passed to the page component as props
+    props: { products: JSON.parse(JSON.stringify(Health)) }, // will be passed to the page component as props
   };
 }
 
-export default Carpets;
+export default Health;

@@ -384,9 +384,9 @@ const Checkout = ({
       <div className="mx-[2.8] my-2">
         <Link href={"/checkout"}>
           <button
-            disabled={disabled}
+            
             onClick={initiatePayment}
-            className=" disabled:bg-indigo-200 disabled:cursor-auto flex mx-2 mt-6 text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none font-semibold hover:bg-indigo-600 rounded text-sm "
+            className=" flex mx-2 mt-6 text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none font-semibold hover:bg-indigo-600 rounded text-sm "
           >
             <FaGratipay className="m-1" /> Pay ₹{subTotal}
           </button>

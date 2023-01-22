@@ -7,6 +7,7 @@ import {
   staggerContainer,
   textVariant,
 } from "../utils/motion";
+import AllProducts from "../components/AllProducts";
 
 export default function Home() {
   const router = useRouter();
@@ -18,8 +19,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className="bg-gradient-to-r from-indigo-200 via-red-200 to-lime-100">
-        <motion.div
+      <section className="bg-gradient-to-r from-indigo-200 to-lime-100">
+      <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="show"
@@ -31,14 +32,13 @@ export default function Home() {
               variants={textVariant(1.1)}
               className="max-w-2xl mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-4xl xl:text-5xl dark:text-[#191116]"
             >
-              Shop on Rollend For Classic Arabic Carpet now!
+              Shop on Rollend For Classic Arabic Carpet , Electronic , Beauty , Products , Many More!
             </motion.h1>
             <motion.p
               variants={fadeIn("up", "tween", 0.2, 1)}
               className="max-w-2xl mb-6 text-gray-900 lg:mb-8 md:text-lg lg:text-xl dark:text-[#3B185F] font-normal"
             >
-              We focus on the design and manufacturing of high quality custom
-              carpets which we do not compromise in the quality of our products
+              We focus on the design and manufacturing of high quality Product do not compromise in the quality of our products
             </motion.p>
 
             <motion.a
@@ -49,6 +49,7 @@ export default function Home() {
               Browse Product
             </motion.a>
           </div>
+          
           <div
             variants={staggerContainer}
             initial="hidden"
@@ -64,9 +65,11 @@ export default function Home() {
             />
           </div>
         </motion.div>
+        <AllProducts/>
+       
       </section>
 
-      <section className="bg-gradient-to-r from-indigo-200 via-red-200 to-lime-100">
+      <section className="bg-gradient-to-r from-indigo-200  to-lime-100">
         <div className="container px-5 py-5 mx-auto">
           <motion.div
             variants={staggerContainer}
