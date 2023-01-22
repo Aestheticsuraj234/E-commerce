@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link"
+import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
 import {
   AiOutlineShoppingCart,
@@ -10,6 +10,8 @@ import {
 import { BsFillBagCheckFill } from "react-icons/bs";
 import { useRouter } from "next/router";
 import { MdAccountCircle } from "react-icons/md";
+import Image from "next/image";
+import Logo from "../public/logo.png";
 
 const Navbar = ({
   logout,
@@ -26,7 +28,7 @@ const Navbar = ({
 
   useEffect(() => {
     Object.keys(cart).length !== 0 && setSidebar(true);
-    let exempted = ['/checkout','/MyOrder','/orders','/']
+    let exempted = ["/checkout", "/MyOrder", "/orders", "/", "/admin"];
     if (exempted.includes(router.pathname)) {
       setSidebar(false);
     }
@@ -64,11 +66,15 @@ const Navbar = ({
                 </li>
               </Link>
 
-           {  user.role==="admin" ? <Link href={"/admin"}>
-                <li className="py-1 hover:text-indigo-900 text-600 text-sm font-semibold ">
-                  Admin Panel
-                </li>
-              </Link> : ""}
+              {user.role === "admin" ? (
+                <Link href={"/admin"}>
+                  <li className="py-1 hover:text-indigo-900 text-600 text-sm font-semibold ">
+                    Admin Panel
+                  </li>
+                </Link>
+              ) : (
+                ""
+              )}
 
               <li
                 onClick={logout}
@@ -87,7 +93,13 @@ const Navbar = ({
       >
         <Link href={"/"}>
           <div className="logo  mr-auto md:mx-5 cursor-pointer">
-            <img src="/logo.png" alt="" className="w-full h-12 rounded-full" />
+            <Image
+              src={Logo}
+              alt=""
+              className="w-full h-12 rounded-full"
+              height={40}
+              width={40}
+            />
           </div>
         </Link>
         <div className="nav">
@@ -202,7 +214,7 @@ const Navbar = ({
             <div className="font-bold my-2 ">SubTotal : ${subTotal}</div>
 
             <div className="flex">
-              <Link href={"/Checkout"}>
+              <Link href={"/checkout"}>
                 <button
                   disabled={Object.keys(cart).length === 0}
                   className=" disabled:bg-pink-300 flex mx-2 mt-6 text-pink-500 bg-gray-100 border-0 py-2 px-2 focus:outline-none font-semibold hover:bg-gray-200 rounded text-sm "
