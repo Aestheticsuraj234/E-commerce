@@ -11,19 +11,41 @@ import {
 } from "../utils/motion";
 
 const Beauty = ({ products }) => {
-  return (
+return (
     <div>
      <section className="bg-gradient-to-r min-h-screen from-indigo-200 via-red-200 to-lime-100">
         <motion.div   variants={staggerContainer}
           initial="hidden"
           whileInView="show"
           viewport={{ once: false, amount: 0.25 }} className="container px-5 py-12 mx-auto">
-          {/* <ProductBanner /> */}
-          <h1 className="font-extrabold py-12 text-gray-800 text-center text-xl">
+          <ProductBanner />
+        <h1 className="font-extrabold py-12 text-gray-800 text-center text-xl">
             Top Product
           </h1>
 
-            {Object.keys(products).length === 0 && <h1 className="font-bold text-center text-4xl ">Sorry All the Beauty Products are Out of Stock</h1>}
+          {Object.keys(products).length === 0 && (
+            <section className="text-gray-600 body-font">
+              <div className="container mx-auto flex px-5 py-16 items-center justify-center flex-col">
+                <img
+                  className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
+                  alt="hero"
+                  src="/out.svg"
+                />
+                <div className="text-center lg:w-2/3 w-full">
+                  <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+                    All The Product is Out Of Stock We WIll Notify You When we Back
+                  </h1>
+          
+                  <div className="flex justify-center">
+                    <button onClick={()=>router.push('/')} className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                      Home
+                    </button>
+                   
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 m-auto h-full w-full ">
             {Object.keys(products).map((items) => {
               return (
