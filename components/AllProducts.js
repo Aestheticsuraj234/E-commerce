@@ -46,7 +46,7 @@ const AllProducts = () => {
                   </p>
                 </div>
                 <div className="px-6 py-4">
-                  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+                  <span className="inline-block bg-emerald-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
                     {items.product.category}
                   </span>
                   <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
@@ -55,12 +55,12 @@ const AllProducts = () => {
                 </div>
                 <div className="px-6 py-4">
                   <span
-                    className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm
+                    className="inline-block bg-yellow-200 rounded-full px-3 py-1 text-sm
       font-semibold text-gray-700 mr-2"
                   >
-                    {items.product.price}
+                    ${items.product.price}
                   </span>
-                  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
+                  <span className="inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
                     {items.product.availableQty} Available
                   </span>
                 </div>

@@ -9,6 +9,7 @@ import {
 } from "../utils/motion";
 import AllProducts from "../components/AllProducts";
 
+
 export default function Home() {
   const router = useRouter();
   return (
@@ -65,6 +66,7 @@ export default function Home() {
             />
           </div>
         </motion.div>
+       
         <AllProducts/>
        
       </section>

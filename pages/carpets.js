@@ -105,8 +105,7 @@ const Carpets = ({ products }) => {
                           <button
                             key={color}
                             className={`border-2 ${
-                              `bg-${color}-600` || `bg-${color}`
-                            } hover:bg-${color}-500 rounded-full w-4 h-4`}
+                              `bg-${color}-600`} hover:bg-${color}-500 rounded-full w-4 h-4`}
                           ></button>
                         ))}
                       </div>
